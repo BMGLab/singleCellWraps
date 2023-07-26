@@ -1,7 +1,7 @@
 #Essential Seurat Workflow
 #Seurat workflow takes raw single-cell expression data and aims to find clusters within the data
 
-#You must have count matrix, features and cell barcodes present in the folder:
+#Count matrix, features and cell barcodes should be present in the folder:
 pbmc.counts <- Read10X(data.dir = "~/Downloads/pbmc3k/filtered_gene_bc_matrices/hg19/")
 # Create the Seurat object with the raw data:
 pbmc <- CreateSeuratObject(counts = pbmc.counts)
