@@ -2,6 +2,7 @@
 #' mean gene expression of genes in a given gene set (Gs). The second is the df of Factor loading values per cell.
 #' GEM: gene expression matrix. Has to be genes (rows) by cells (cols).
 #' Gs: Gene set. Gene symbols have to be present the GEM row names.
+# test 
 #' nF: Number of factors to be run
 RunCFA_GScors <- function( GEM, Gs, nF=3){
 
