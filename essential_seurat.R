@@ -1,11 +1,12 @@
 #Essential Seurat Workflow
-#heheheh
 #Seurat workflow takes raw single-cell expression data and aims to find clusters within the data
 
 #You must have count matrix, features and cell barcodes present in the folder:
 pbmc.counts <- Read10X(data.dir = "~/Downloads/pbmc3k/filtered_gene_bc_matrices/hg19/")
 # Create the Seurat object with the raw data:
 pbmc <- CreateSeuratObject(counts = pbmc.counts)
+
+#-------PreProcessing-------
 #QC to filter out doublets and the dead cells:
 pbmc[["percent.mt"]] <- PercentageFeatureSet(pbmc, pattern = "^MT-")
 pbmc <- subset(pbmc, subset = nFeature_RNA > 200 & nFeature_RNA < 2500 & percent.mt < 5)
@@ -17,6 +18,9 @@ pbmc <- NormalizeData(object = pbmc)
 pbmc <- FindVariableFeatures(object = pbmc)
 #ScaleData: linear transformation which is a standard pre-processing step prior to dimensional reduction like PCA
 pbmc <- ScaleData(object = pbmc)
+#---------------------------
+
+
 #PCA
 pbmc <- RunPCA(object = pbmc)
 #To select which PCs will be used for the analysis
